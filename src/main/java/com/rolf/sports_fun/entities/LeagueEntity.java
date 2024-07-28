@@ -18,33 +18,15 @@ public class LeagueEntity extends BaseEntity {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "player_score")
+    private boolean playerScore = false; // Indicate if the player score with the team
+
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinTable(name = "league_team",
             joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "league_id"))
     private List<LeagueTeamEntity> teamLeague;
 
-    public SportEntity getSport() {
-        return sport;
-    }
+    /* -------- Setters and Getters -------- */
 
-    public void setSport(SportEntity sport) {
-        this.sport = sport;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

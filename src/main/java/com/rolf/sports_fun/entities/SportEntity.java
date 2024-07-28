@@ -12,6 +12,14 @@ public class SportEntity extends BaseEntity {
     @Column(name = "description", nullable = true)
     private String description;
 
+    public SportEntity() {
+    }
+
+    public SportEntity(Long id){
+        super(id);
+    }
+
+    /* -------- Setters and Getters -------- */
     public String getName() {
         return name;
     }

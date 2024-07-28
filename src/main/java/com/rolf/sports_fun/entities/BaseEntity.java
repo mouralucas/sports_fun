@@ -20,6 +20,13 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "deleted_at", nullable = true)
     private LocalDateTime deletedAt;
 
+    public BaseEntity() {
+    }
+
+    public BaseEntity(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
