@@ -1,5 +1,6 @@
 package com.rolf.sports_fun.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -14,13 +15,19 @@ public class TeamEntity extends BaseEntity{
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(cascade = CascadeType.REFRESH)
-    @JoinTable(name = "league_team",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "team_id"))
-    private List<LeagueTeamEntity> teamLeague;
+    @ManyToMany(mappedBy = "teams")
+    @JsonBackReference
+    private List<LeagueEntity> leagues;
+
+    public TeamEntity(Long id) {
+        super(id);
+    }
+
+    public TeamEntity() {
+    }
 
     /* -------- Setters and Getters -------- */
+
     public SportEntity getSport() {
         return sport;
     }
@@ -37,11 +44,11 @@ public class TeamEntity extends BaseEntity{
         this.name = name;
     }
 
-    public List<LeagueTeamEntity> getTeamLeague() {
-        return teamLeague;
+    public List<LeagueEntity> getLeagues() {
+        return leagues;
     }
 
-    public void setTeamLeague(List<LeagueTeamEntity> teamLeague) {
-        this.teamLeague = teamLeague;
+    public void setLeagues(List<LeagueEntity> leagues) {
+        this.leagues = leagues;
     }
 }

@@ -1,6 +1,8 @@
 package com.rolf.sports_fun.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -23,10 +25,50 @@ public class LeagueEntity extends BaseEntity {
 
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinTable(name = "league_team",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "league_id"))
-    private List<LeagueTeamEntity> teamLeague;
+            joinColumns = @JoinColumn(name = "league_id"),
+            inverseJoinColumns = @JoinColumn(name = "team_id"))
+    @JsonManagedReference
+    private List<TeamEntity> teams;
 
     /* -------- Setters and Getters -------- */
 
+    public SportEntity getSport() {
+        return sport;
+    }
+
+    public void setSport(SportEntity sport) {
+        this.sport = sport;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isPlayerScore() {
+        return playerScore;
+    }
+
+    public void setPlayerScore(boolean playerScore) {
+        this.playerScore = playerScore;
+    }
+
+    public List<TeamEntity> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(List<TeamEntity> teams) {
+        this.teams = teams;
+    }
 }
