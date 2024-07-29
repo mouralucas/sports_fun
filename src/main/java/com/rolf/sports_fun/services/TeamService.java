@@ -4,6 +4,7 @@ import com.rolf.sports_fun.dto.CreateTeamRequest;
 import com.rolf.sports_fun.entities.SportEntity;
 import com.rolf.sports_fun.entities.TeamEntity;
 import com.rolf.sports_fun.repositories.TeamRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class TeamService {
         return teamRepository.findAll();
     }
 
+    @Transactional
     public TeamEntity createTeam(CreateTeamRequest team) {
         SportEntity sport = new SportEntity(team.getSport_id());
 

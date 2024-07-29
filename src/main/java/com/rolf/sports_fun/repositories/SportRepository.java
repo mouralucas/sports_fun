@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 
 @Repository
-public interface SportRepository extends JpaRepository<SportEntity, String> {
+public interface SportRepository extends JpaRepository<SportEntity, Long> {
     public default SportEntity addSport(SportEntity sport) {
         //TODO: Its not a good approach
         sport.setCreatedAt(LocalDateTime.now());
