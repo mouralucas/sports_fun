@@ -13,10 +13,10 @@ public class GroupEntity extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_id")
     private GroupEntity parent;
 
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Set<GroupEntity> children;
 }

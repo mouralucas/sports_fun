@@ -28,7 +28,7 @@ public class SportService {
         new_sport.setName(sport.getName());
         new_sport.setDescription(sport.getDescription());
 
-        return sportRepository.addSport(new_sport);
+        return sportRepository.save(new_sport);
     }
 
 }

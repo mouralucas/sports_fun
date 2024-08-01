@@ -31,8 +31,8 @@ public class LeagueController {
     }
 
     @GetMapping("/league/team")
-    public List<TeamEntity> getLeagueTeams(@RequestParam int leagueId) {
-        return null;
+    public List<TeamEntity> getLeagueTeams(@RequestParam Long leagueId) {
+        return leagueService.getLeagueTeams(leagueId);
     }
 
     @PostMapping("/league/team")

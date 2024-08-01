@@ -25,6 +25,10 @@ public class LeagueService {
         return leagueRepository.findAll();
     }
 
+    public List<TeamEntity> getLeagueTeams(Long leagueId){
+        return leagueRepository.findAllTeamsByLeagueId(leagueId);
+    }
+
     @Transactional
     public LeagueEntity createLeague(CreateLeagueRequest createLeagueRequest) {
         LeagueEntity league = new LeagueEntity();

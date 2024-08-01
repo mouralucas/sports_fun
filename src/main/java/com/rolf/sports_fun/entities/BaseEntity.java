@@ -20,6 +20,16 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "deleted_at", nullable = true)
     private LocalDateTime deletedAt;
 
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        lastEditedAt = LocalDateTime.now();
+    }
+
     public BaseEntity() {
     }
 

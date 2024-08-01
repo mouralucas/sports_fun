@@ -9,7 +9,7 @@ public class VenueEntity extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinColumn(name = "type_id")
     private VenueTypeEntity type;
 

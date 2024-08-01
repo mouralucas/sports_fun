@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "league")
 public class LeagueEntity extends BaseEntity {
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinColumn(name = "sport_id")
     private SportEntity sport;
 
@@ -23,7 +23,7 @@ public class LeagueEntity extends BaseEntity {
     @Column(name = "player_score")
     private boolean playerScore = false; // Indicate if the player score with the team
 
-    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinTable(name = "league_team",
             joinColumns = @JoinColumn(name = "league_id"),
             inverseJoinColumns = @JoinColumn(name = "team_id"))
