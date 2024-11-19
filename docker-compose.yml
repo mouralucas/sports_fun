@@ -8,9 +8,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: sport_dev_db
     ports:
-      - "5434:5434"
-    expose:
-      - "5434"
+      - "6432:6432"
     volumes:
       - sports-data:/var/lib/postgresql/data:cached
 
